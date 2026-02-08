@@ -39,6 +39,13 @@ app.get('/todo', function (req, res) {
             todolist.push(newTodo);
         }
         res.redirect('/todo');
+    .post('/todo/add/', function (req, res) {
+        // Escapes HTML special characters in attribute values as HTML entities
+        let newTodo = sanitizer.escape(req.body.newtodo);
+        if (req.body.newtodo != '') {
+            todolist.push(newTodo);
+        }
+        res.redirect('/todo');
     })
 
     /* Deletes an item from the to do list */
